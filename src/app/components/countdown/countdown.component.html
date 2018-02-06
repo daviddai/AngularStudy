@@ -1,0 +1,6 @@
+<h3>Count Down</h3>
+<button (click)="start()" [disabled]="started">Start</button>
+&nbsp;{{ seconds() }}
+&nbsp;
+<button (click)="stop()" [disabled]="!started">Stop</button>
+<app-timer [seconds]="20"></app-timer>

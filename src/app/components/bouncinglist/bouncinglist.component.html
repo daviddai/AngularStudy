@@ -1,0 +1,12 @@
+<h3>Bouncing List</h3>
+<ul>
+  <ng-container *ngFor="let item of items">
+      <li *ngIf="!item.hideElement"
+          [@flyInOut]="item.state"
+          (@flyInOut.done)="animationDone($event, item.id)">
+          <div class="item">
+            {{ item.name }}
+          </div>
+      </li>
+  </ng-container>
+</ul>

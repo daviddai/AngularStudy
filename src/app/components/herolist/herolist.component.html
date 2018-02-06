@@ -1,0 +1,12 @@
+<h3>Animated Hero List</h3>
+<button (click)="showMoreHeros()">Show More Heros</button>
+<button (click)="hideMoreHeros()">Hide More Heros</button>
+<ul>
+  <ng-container *ngFor="let hero of heros">
+    <li *ngIf="!hero.isHidden()"
+        [@heroState]="hero.state"
+        (click)="hero.toggleState()">
+        {{ hero.name }}
+    </li>
+  </ng-container>
+</ul>

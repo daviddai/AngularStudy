@@ -1,0 +1,13 @@
+<div>
+  <h2>Hero Component</h2>
+  <h3>My Favourite Hero is {{ myHero.name }}</h3>
+  <p>Heros:</p>
+  <ul id="heroList">
+    <li *ngFor="let hero of heros" (click)="updateMyHero(hero.id)">
+      {{ hero.name }}
+    </li>
+  </ul>
+  <p *ngIf="heros.length < 5">You have less then 5 heros</p>
+  <p *ngIf="heros.length >= 5">You have so many heros</p>
+  <input type="text" [(ngModel)]="newHeroName">&nbsp;<button (click)="addHero()">Add</button>
+</div>
