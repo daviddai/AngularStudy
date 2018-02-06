@@ -1,7 +1,8 @@
-<div>
+<div id="sandbox">
   <h1 style="text-align: center">
     Welcome to {{ title }}!
   </h1>
+  <hr>
   <app-hero></app-hero>
   <hr>
   <app-votetaker></app-votetaker>
@@ -14,17 +15,19 @@
     [appHighlight] both applies highlight directive and set
     the directive's highlight color with a property binding
   -->
-  <h3>Pick a highlight color</h3>
+  <h4>Pick a highlight color</h4>
   <div>
     <input type="radio" name="colors" (click)="color='green'">&nbsp;Green
     <input type="radio" name="colors" (click)="color='blue'">&nbsp;Blue
     <input type="radio" name="colors" (click)="color='red'">&nbsp;Red
     <input type="radio" name="colors" (click)="color=''">&nbsp;Default
   </div>
+  <br>
   <p [appHighlight]="color">Highlight Me!</p>
   <hr>
   <app-herolist></app-herolist>
   <hr>
   <app-bouncinglist></app-bouncinglist>
   <hr>
+  <app-heroform></app-heroform>
 </div>

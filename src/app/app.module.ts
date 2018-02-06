@@ -15,6 +15,7 @@ import { AstronautComponent } from './components/astronaut/astronaut.component';
 import { HighlightDirective } from './directives/highlight.directive';
 import { HerolistComponent } from './components/herolist/herolist.component';
 import { BouncinglistComponent } from './components/bouncinglist/bouncinglist.component';
+import { HeroformComponent } from './components/heroform/heroform.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { BouncinglistComponent } from './components/bouncinglist/bouncinglist.co
     AstronautComponent,
     HighlightDirective,
     HerolistComponent,
-    BouncinglistComponent
+    BouncinglistComponent,
+    HeroformComponent
   ],
   imports: [
     BrowserModule,

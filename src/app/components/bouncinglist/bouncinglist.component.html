@@ -1,4 +1,7 @@
-<h3>Bouncing List</h3>
+<h4>Bouncing List</h4>
+<button (click)="startAnimation()" [disabled]="disableAnimationButton">Start Bouncing Animation</button>
+<br>
+<br>
 <ul>
   <ng-container *ngFor="let item of items">
       <li *ngIf="!item.hideElement"

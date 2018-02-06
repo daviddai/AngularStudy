@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {
   trigger,
   state,
@@ -34,7 +34,7 @@ import {
     ])
   ]
 })
-export class BouncinglistComponent implements OnInit, AfterViewInit {
+export class BouncinglistComponent implements OnInit {
 
   public items: Item[] = [
     new Item(0, "Item A"),
@@ -42,16 +42,15 @@ export class BouncinglistComponent implements OnInit, AfterViewInit {
     new Item(2, "Item C")
   ];
 
+  public disableAnimationButton: boolean = false;
+
   constructor() {}
 
   ngOnInit() {}
 
-  ngAfterViewInit() {
-    this.startComponentAnimation();
-  }
-
-  startComponentAnimation() {
+  startAnimation() {
     this.animationStart('in', 0);
+    this.disableAnimationButton = true;
   }
 
   animationStart(toState: string, itemIndex: number) {
@@ -73,7 +72,7 @@ export class BouncinglistComponent implements OnInit, AfterViewInit {
         if (itemIndex > 0) {
           this.animationStart('void', itemIndex - 1);
         } else {
-          this.animationStart('in', 0);
+          this.disableAnimationButton = false;
         }
     }
   }

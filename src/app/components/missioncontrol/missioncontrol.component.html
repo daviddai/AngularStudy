@@ -1,9 +1,9 @@
-<h3>Mission Control</h3>
+<h4>Mission Control</h4>
 <button (click)="announce()">Announce Mission</button>
 <app-astronaut *ngFor="let astronaut of astronauts"
                [astronaut]="astronaut">
 </app-astronaut>
-<h3>History</h3>
+<h5>History</h5>
 <ul>
   <li *ngFor="let event of history">{{ event }}</li>
 </ul>
