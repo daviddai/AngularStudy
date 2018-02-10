@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-heroform',
@@ -7,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeroformComponent implements OnInit {
 
+  heroForm: FormGroup;
   hero: Hero;
   heroPowers: string[];
 
@@ -15,10 +17,23 @@ export class HeroformComponent implements OnInit {
     this.heroPowers = HeroPowerService.getHeroPowers();
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.heroForm = new FormGroup({
+      'name': new FormControl(this.hero.name, [
+        Validators.required,
+        Validators.minLength(4)
+        //forbiddenNameValidator(/bob/i)
+      ]),
+      'alterEgo': new FormControl(this.hero.alterEgo),
+      'power': new FormControl(this.hero.power, [
+        Validators.required
+      ])
+    })
+  }
 
   onSubmit() {
     console.log(JSON.stringify(this.hero));
+    this.heroForm.reset();
     this.clearForm();
   }
 
@@ -26,6 +41,14 @@ export class HeroformComponent implements OnInit {
     this.hero.name = "";
     this.hero.alterEgo = "";
     this.hero.power = "";
+  }
+
+  get name() { 
+    return this.heroForm.get('name');
+  }
+
+  get power() {
+    return this.heroForm.get('power');
   }
 
 }

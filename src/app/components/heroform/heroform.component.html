@@ -1,41 +1,51 @@
 <div>
   <h5>Hero Form</h5>
-  <form (ngSubmit)="onSubmit(); heroForm.reset()" #heroForm="ngForm">
+  <form (ngSubmit)="onSubmit()" [formGroup]="heroForm">
     <div class="form-group">
       <label>Name:</label>
-      <input type="text" 
-             class="form-control" 
-             id="name" 
-             required 
+      <input id="name"
              [(ngModel)]="hero.name"
-             name="name"
-             #name="ngModel">
-      <div [hidden]="name.valid || name.pristine" class="alert alert-danger">
-        Hero Name Is Required.
+             class="form-control" 
+             required 
+             formControlName="name">
+      <!--
+        the variable name used in the ngIf actually calls function "get name()"
+        in the component class which returns the FormControl object
+       -->
+      <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert alert-danger">
+        <div *ngIf="name.errors.required">
+          Hero name is required.
+        </div>
+        <div *ngIf="name.errors.minlength">
+          Hero name must be at least 4 characters long.
+        </div>
+        <!-- <div *ngIf="name.errors.forbiddenName">
+          Name cannot be Bob.
+        </div> -->
       </div>
     </div>
     <div class="form-group">
       <label>Alter Ego</label>
-      <input type="text" 
+      <input id="alterEgo"
+             [(ngModel)]="hero.power"
              class="form-control"
-             id="alterEgo"
-             [(ngModel)]="hero.alterEgo"
-             name="alterEgo">
+             formControlName="alterEgo">
     </div>
     <div class="form-group">
       <label>Hero Power</label>
-      <select class="form-control" 
-              id="heroPower"
+      <select id="heroPower"
               [(ngModel)]="hero.power"
-              name="power"
+              class="form-control"
               required
-              #power="ngModel">
+              formControlName="power">
         <option *ngFor="let power of heroPowers" [value]="power">
           {{ power }}
         </option>
       </select>
-      <div [hidden]="power.valid || power.pristine" class="alert alert-danger"></div>
+      <div *ngIf="power.invalid && (power.dirty || power.touched)" class="alert alert-danger">
+        Hero power must be selected.
+      </div>
     </div>
-    <button type="submit" class="btn btn-success" [disabled]="!heroForm.form.valid">Submit</button>
+    <button type="submit" class="btn btn-success" [disabled]="heroForm.invalid">Submit</button>
   </form>
 </div>
