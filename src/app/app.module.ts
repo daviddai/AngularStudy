@@ -16,6 +16,7 @@ import { HighlightDirective } from './directives/highlight.directive';
 import { HerolistComponent } from './components/herolist/herolist.component';
 import { BouncinglistComponent } from './components/bouncinglist/bouncinglist.component';
 import { HeroformComponent } from './components/heroform/heroform.component';
+import { ForbiddenNameDirective } from './directives/forbidden-name.directive';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { HeroformComponent } from './components/heroform/heroform.component';
     HighlightDirective,
     HerolistComponent,
     BouncinglistComponent,
-    HeroformComponent
+    HeroformComponent,
+    ForbiddenNameDirective
   ],
   imports: [
     BrowserModule,

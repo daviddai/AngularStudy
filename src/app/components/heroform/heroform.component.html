@@ -19,24 +19,24 @@
         <div *ngIf="name.errors.minlength">
           Hero name must be at least 4 characters long.
         </div>
-        <!-- <div *ngIf="name.errors.forbiddenName">
+        <div *ngIf="name.errors.forbiddenName">
           Name cannot be Bob.
-        </div> -->
+        </div>
       </div>
     </div>
     <div class="form-group">
       <label>Alter Ego</label>
       <input id="alterEgo"
-             [(ngModel)]="hero.power"
+             [(ngModel)]="hero.alterEgo"
              class="form-control"
              formControlName="alterEgo">
     </div>
     <div class="form-group">
       <label>Hero Power</label>
       <select id="heroPower"
-              [(ngModel)]="hero.power"
               class="form-control"
               required
+              [(ngModel)]="hero.power"
               formControlName="power">
         <option *ngFor="let power of heroPowers" [value]="power">
           {{ power }}
